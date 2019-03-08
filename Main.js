@@ -12,36 +12,12 @@ let mainWindow;
 
 const userPrefs = new UserPrefs({
     configName: "user-preferences",
-    defaults: {
-        windowBounds: { width: 800, height: 600 },
-        fullScreen: "false"
-    }
+    defaults: JSON.parse(fs.readFileSync("default_preferences/user-preferences.json"))
 });
 
 const layoutConfig = new UserPrefs({
     configName: "layout-config",
-    defaults: {
-        splits: {
-            type: "horizontal-split",
-            distance: "75",
-            first: {
-                type: "vertical-split",
-                distance: "75",
-                first: {
-                    type: "window",
-                    window: "Views/nodeTree.json"
-                },
-                second: {
-                    type: "window",
-                    window: "Views/imagePreview.json"
-                }
-            },
-            second: {
-                type: "window",
-                window: "Views/nodeList.json"
-            }
-        }
-    }
+    defaults: JSON.parse(fs.readFileSync("default_preferences/layout-config.json"))
 });
 
 app.on("ready", () =>

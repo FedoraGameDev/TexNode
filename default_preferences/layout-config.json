@@ -1,0 +1,22 @@
+{
+    "splits": {
+        "type": "horizontal-split",
+        "distance": "75",
+        "first": {
+            "type": "vertical-split",
+            "distance": "75",
+            "first": {
+                "type": "window",
+                "window": "Views/nodeTree.json"
+            },
+            "second": {
+                "type": "window",
+                "window": "Views/imagePreview.json"
+            }
+        },
+        "second": {
+            "type": "window",
+            "window": "Views/nodeList.json"
+        }
+    }
+}
