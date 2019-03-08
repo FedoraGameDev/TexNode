@@ -1,0 +1,14 @@
+{
+  "name": "texnode",
+  "version": "0.0.1-SNAPSHOT",
+  "description": "",
+  "main": "Main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "author": "FedoraDev",
+  "license": "MIT",
+  "dependencies": {
+    "electron": "^4.0.7"
+  }
+}
