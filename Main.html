@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>TexNode</title>
+</head>
+
+<body>
+    <div id="content"></div>
+
+    <script>
+        const electron = require("electron");
+        const { ipcRenderer } = electron;
+
+        const content = document.querySelector("#content");
+
+        ipcRenderer.send("debug:log", "Main.html Adding listener.");
+        ipcRenderer.on("add:box", (e, box) =>
+        {
+            console.log("Adding new Box");
+            box.forEach(element =>
+            {
+                createNode(content, element);
+            });
+        });
+
+        function createNode(parent, element)
+        {
+            let addition = document.createElement(element.type);
+
+            if (element.contents.type == "text")
+                addition.innerHTML = element.contents.value;
+            else
+            {
+                let innerAddition = createNode(addition, element.contents);
+
+                addition.appendChild(innerAddition);
+            }
+
+            element.attributes.forEach(element =>
+            {
+                addition.setAttribute(element.attribute, element.value);
+            });
+            parent.appendChild(addition);
+        }
+    </script>
+</body>
+
+</html>
